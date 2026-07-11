@@ -1,0 +1,141 @@
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  margin: 0;
+  width: 100%;
+  min-height: 100%;
+}
+
+body {
+  min-height: 100vh;
+
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+
+  overflow: hidden;
+
+  background: black;
+}
+
+/*
+  The original design is treated as a 1536 × 864 canvas.
+
+  The whole composition now grows and shrinks together.
+*/
+.page {
+  position: relative;
+
+  width: min(100vw, calc(100vh * 16 / 9));
+  aspect-ratio: 16 / 9;
+
+  flex-shrink: 0;
+
+  container-type: inline-size;
+
+  background-image: url("reference.png");
+  background-size: 100% 115%;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+/* Login fields */
+
+.login-box {
+  position: absolute;
+
+  left: 38%;
+  width: 26.3%;
+
+  height: 3.5%;
+
+  padding: 0.45cqw 0.75cqw;
+
+  border: none;
+  outline: none;
+
+  font-size: 1.05cqw;
+}
+
+.username-box {
+  top: 56%;
+}
+
+.password-box {
+  top: 64.5%;
+}
+
+/* Green hover glow */
+
+.glow-zone {
+  position: absolute;
+
+  left: 33%;
+  top: 46%;
+
+  width: 34%;
+  height: 36%;
+
+  border-radius: 1cqw;
+
+  transition: box-shadow 0.2s ease;
+}
+
+.page:has(
+  .glow-zone:hover,
+  .login-box:hover,
+  .forgot-cover:hover
+) .glow-zone {
+  box-shadow:
+    0 0 1cqw #6cff00,
+    0 0 2cqw #6cff00,
+    0 0 4cqw #6cff00,
+    0 0 6cqw #6cff00;
+}
+
+/* Summon button */
+
+.summon-button {
+  position: absolute;
+
+  left: 35.677%;
+  top: 70.2%;
+
+  width: 28.646%;
+  height: 6.366%;
+
+  padding: 0;
+  border: none;
+
+  background-color: transparent;
+  background-image: url("summon-button.png");
+  background-size: 100% 100%;
+  background-position: center;
+  background-repeat: no-repeat;
+
+  cursor: pointer;
+}
+
+.summon-button:active {
+  transform: translateY(0.2cqw);
+  filter: brightness(0.75);
+}
+
+/* Covers the original forgot-password text */
+
+.forgot-cover {
+  position: absolute;
+
+  left: 39.714%;
+  top: 77%;
+
+  width: 22.135%;
+  height: 3.472%;
+
+  background: black;
+
+  transition: opacity 0.3s ease;
+}
